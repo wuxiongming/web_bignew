@@ -48,6 +48,7 @@ function getUserInfo() {
             //调用renderAvatar 渲染用户头像
             renderAvatar(res.data)
 
+
         },
 
         // complete: function (res) {
@@ -72,6 +73,7 @@ function getUserInfo() {
 }
 
 function renderAvatar(user) {
+
     var name = user.nickname || user.username
 
     $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
@@ -80,7 +82,7 @@ function renderAvatar(user) {
     if (user.user_pic !== null) {
 
         $('.layui-nav-img').attr('src', user.user_pic).show()
-        $('.text-avattar').hide()
+        $('.text-avatar').hide()
 
     } else {
         $('.layui-nav-img').hide()
