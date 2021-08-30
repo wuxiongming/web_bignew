@@ -1,0 +1,30 @@
+
+                var dataArr = res.data
+                dataArr.forEach(function (value, index, array) {
+
+                    var ID = value.Id
+
+                    $.ajax({
+                        method: 'GET',
+                        url: '/my/article/deletecate/' + ID,
+
+                        success: function (res) {
+                            if (res.status !== 0) {
+                                // return layer.msg('删除分类失败！')
+                                console.log('删除失败：' + ID)
+                                layer.close(index)
+                            }
+                            console.log('删除成功：' + ID)
+
+                            //layer.msg('删除分类成功！')
+                            //layer.close(index)
+                            //initArtCateList()
+                        }
+                    })
+
+
+
+
+                })
+
+
