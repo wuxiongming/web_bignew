@@ -124,4 +124,43 @@ $(function () {
 
     }
 
+    //绑定删除按钮事件
+
+    $('tbody').on('click', '.btn-delete', function () {
+
+        var id = $(this).attr('data-id')
+
+        var len = $('.btn-delete').length
+
+        console.log(id)
+
+        layer.confirm('确认删除?', { icon: 3, title: '提示' }, function (index) {
+
+            $.ajax({
+                method: 'GET',
+                url: '/my/article/delete/' + id,
+                success: function (res) {
+                    if (res.status !== 0) {
+                        layer.msg('删除失败！')
+                    }
+
+                    layer.msg('删除成功！')
+
+                    layer.close(index)
+
+                    if (len === 1) {
+                        q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1
+                    }
+
+                    initTable()
+
+
+                }
+            })
+
+
+        });
+
+    })
+
 })
